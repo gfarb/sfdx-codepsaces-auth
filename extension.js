@@ -28,9 +28,9 @@ async function environmentUrlPrompt() {
 	]);
 
 	let loginUrl;
-	if(selectedEnv.label == 'Custom') {
+	if (selectedEnv.label == 'Custom') {
 		const customLoginUrl = await userPrompt('Enter a custom login URL');
-		if(customLoginUrl.startsWith('https://') == false) {
+		if (customLoginUrl.startsWith('https://') == false) {
 			loginUrl = 'https://' + customLoginUrl;
 		} else {
 			loginUrl = customLoginUrl;
@@ -46,7 +46,7 @@ async function setDefaultUsernamePrompt() {
 		{ label: 'Set as Default Username' },
 		{ label: 'Don\'t Set as Default Username' }
 	])
-	if(setDefaultUsername.label == 'Set as Default Username') {
+	if (setDefaultUsername.label == 'Set as Default Username') {
 		deviceAuthCommand = deviceAuthCommand + ' --setdefaultusername'
 	}
 }
@@ -56,7 +56,7 @@ async function setAlias() {
 		{ label: 'Set Alias For Login' },
 		{ label: 'Don\'t Set Alias For Login' }
 	])
-	if(setAlias.label == 'Set Alias For Login') {
+	if (setAlias.label == 'Set Alias For Login') {
 		const aliasForLogin = await userPrompt('Enter an Alias For The Login');
 		deviceAuthCommand = deviceAuthCommand + ' --setalias \"' + aliasForLogin + "\"";
 	}
@@ -64,7 +64,7 @@ async function setAlias() {
 
 function sendCommandToTerminal() {
 	let terminal = vscode.window.activeTerminal;
-	if(terminal == undefined) {
+	if (terminal == undefined) {
 		terminal = vscode.window.createTerminal({ name: "SFDX Codespaces" });
 	}
 	terminal.show();
@@ -73,10 +73,10 @@ function sendCommandToTerminal() {
 }
 
 function userPrompt(prompt) {
-    return vscode.window.showInputBox({prompt: prompt});
+	return vscode.window.showInputBox({ prompt: prompt });
 }
 
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
 	activate,
